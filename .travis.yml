@@ -5,3 +5,12 @@ services:
 script: 
     - docker build -t mortezalatifi/node .
     - docker images mortezalatifi/node
+
+befor_test:
+    - docker login -u mortezalatifi -p Fabregas1391
+
+deploy:
+    provider: script
+    script: docker push mortezalatifi/node
+    on:
+        branch: master
